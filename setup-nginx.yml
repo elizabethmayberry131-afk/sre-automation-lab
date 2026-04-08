@@ -1,0 +1,11 @@
+- name: Configure Managed Web Server
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: Create Custom Landing Page
+      copy:
+        content: "<h1>Zhong Yao's Lab: Managed by Ansible</h1>"
+        dest: ./index.html
+
+    - name: Push Page to Terraform Container
+      shell: docker cp ./index.html terraform-managed-nginx:/usr/share/nginx/html/index.html
