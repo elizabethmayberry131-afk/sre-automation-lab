@@ -40,7 +40,7 @@ jobs:
           IMAGE_TAG: ${{ github.sha }}
         run: |
           cd devops-app
-          docker build -t devops-app.tar .
+          docker build -t devops-app .
 
           # Tag and Push to AWS ECR
           docker tag devops-app:latest $ECR_REGISTRY/devops-app:$IMAGE_TAG
