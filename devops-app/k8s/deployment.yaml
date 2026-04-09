@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: devops-app
+  template:
+    metadata:
+      labels:
+        app: devops-app
+    spec:
+      containers:
+      - name: app
+        image: devops-app:v1
+        imagePullPolicy: IfNotPresent  # Tells K8s to look at your local Docker images
+        ports:
+        - containerPort: 3000
