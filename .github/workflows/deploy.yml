@@ -39,7 +39,7 @@ jobs:
           GHCR_REGISTRY: ghcr.io/${{ github.repository }}
           IMAGE_TAG: ${{ github.sha }}
         run: |
-          cd devops-app
+          cd ~/devops-app
           docker build -t devops-app .
 
           # Tag and Push to AWS ECR
