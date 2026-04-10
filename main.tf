@@ -66,7 +66,7 @@ resource "aws_route_table_association" "public_1_assoc" {
 resource "aws_ecr_repository" "devops_app_repo" {
   name                 = "devops-app"
   image_tag_mutability = "MUTABLE"
-
+  force_delete         = true
   image_scanning_configuration {
     scan_on_push = true
   }
@@ -114,4 +114,13 @@ resource "aws_iam_role_policy_attachment" "ecr_attach" {
 
 output "github_actions_role_arn" {
   value = aws_iam_role.github_actions_role.arn
+}
+
+terraform {
+  backend "s3" {
+    bucket  = "zhongyao-terraform-state-2026"
+    key     = "devops-lab/terraform.tfstate"
+    region  = "ap-southeast-1"
+    encrypt = true
+  }
 }
