@@ -121,6 +121,6 @@ terraform {
     bucket  = "zhongyao-terraform-state-2026"
     key     = "devops-lab/terraform.tfstate"
     region  = "ap-southeast-1"
-    encrypt = true
+    encrypt = false
   }
 }
